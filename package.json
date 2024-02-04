@@ -20,6 +20,7 @@
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "pg": "^8.11.3",
+    "qr-image": "^3.2.0",
     "qrcode": "^1.5.3"
   }
 }

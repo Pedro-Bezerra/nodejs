@@ -9,6 +9,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
+const qr = require('qrcode');
 const controller = require('./src/controller');
 const app = express();
 const port = 3000;
@@ -62,11 +63,14 @@ app.get('/paratodosverem/formulario', checkAuthenticated, (req, res) => {
 //    res.sendFile(__dirname + '/public/telas/leitura.html');
 //});
 app.get('/paratodosverem/leitura', checkAuthenticated, (req, res) => {
-    res.render('leitura', {subject: '', name: '', entity: '', description: ''});
+    qr.toDataURL('http://localhost:3000/paratodosverem', (error, code) => {
+        if (error) throw error;
+        res.render('leitura', {subject: '', name: '', entity: '', description: '', qrcodeImage: code});
+    });
 });
 app.get('/paratodosverem/leitura/:id', async (req, res) => {
     const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
-    res.render('leitura', {subject: assunto, name: nome, entity: responsavel, description: descricao});
+    res.render('leitura', {subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: ''});
     //console.log(assunto, nome, responsavel, descricao);
 });
 
@@ -115,5 +119,13 @@ function checkNotAuthenticated(req, res, next) {
     }
     next();
 }
+
+app.get('/', (req, res) => {
+    qr.toDataURL('http://localhost:3000/paratodosverem', (error, code) => {
+        if (error) throw error;
+        res.render('teste', { qrcodeImage: code });
+    });
+    //res.render('teste', { qrcodeImage: qrcode });
+})
 
 app.listen(port,  () => console.info("servidor na porta 3000 inicializado"));
