@@ -24,8 +24,12 @@ const getTemas = (req, res) => {
 
 const getTemasById = async (req, res) => {
     try {
-        const id = parseInt(req.params.id);
-        const results = await pool.query(queries.getTemasById, [id]);
+        console.log(req.params.id);
+        const id = await req.params.id;
+        const parseId = parseInt(id);
+        console.log(id);
+        console.log(parseId);
+        const results = await pool.query(queries.getTemasById, [parseId]);
         const array = results.rows[0];
         console.log(array);
         return array;
@@ -35,19 +39,37 @@ const getTemasById = async (req, res) => {
     }
 };
 
-const insertTema = (req, res) => {
+/*const insertTema = (req, res) => {
     const { assunto, nome, responsavel, codigo, descricao } = req.body;
     pool.query(queries.checkCodigoExists, [codigo], (error, results) => {
         if(results.rows.length) {
-            res.send("Tema de código ", codigo, " já foi cadastrado");
+            //res.send("Tema de código ", codigo, " já foi cadastrado");
             console.log('já foi cadastrado');
+            return false;
         } else {
             pool.query(queries.insertTema, [assunto, nome, responsavel, codigo, descricao], (error, results) => {
                 if (error) throw error;
-                res.status(201).send("Tema inserido com sucesso");
+                return true;
+                //res.status(201).send("Tema inserido com sucesso");
             })
         }
     });
+};*/
+
+const insertTema = async (req, res) => {
+    const { assunto, nome, responsavel, codigo, descricao } = req.body;
+    const resultados = await pool.query(queries.checkCodigoExists, [codigo]);
+    if (!resultados.rows.length) {
+        try {
+            const temas = await pool.query(queries.insertTema, [assunto, nome, responsavel, codigo, descricao]);
+            return true;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+    console.log('já foi cadastrado');
+    return false;
 };
 
 const insertUsuario = (req, res, senha) => {
@@ -73,11 +95,18 @@ const getUsuarioById = async (id) => {
     return results.rows[0];
 };
 
+const getIdByCodigo = async (codigo) => {
+    const results = await pool.query(queries.checkCodigoExists, [codigo]);
+    console.log(results.rows[0].id_tema);
+    return results.rows[0].id_tema;
+}
+
 module.exports = {
     getTemas, 
     getTemasById,
     insertTema,
     insertUsuario,
     getUsuarioByEmail,
-    getUsuarioById
+    getUsuarioById,
+    getIdByCodigo
 }
