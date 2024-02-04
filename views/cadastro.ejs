@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style-cadastro.css" >
+    <title>Cadastro</title>
+</head>
+<body>
+    <main class="secao-principal">
+        <div class="secao-principal_container">
+            <header class="secao-principal_container-cabecalho">
+                <section class="secao-principal_container-secao-menu">
+                    <img class="secao-principal_container-cabecalho_img-menu" src="../images/menu-lines.png" alt="três linhas do menu">
+                </section>
+                <section class="secao-principal_container-secao-logo">
+                    <img class="secao-principal_container-cabecalho_img-logo" src="../images/PTV.png" alt="logo PTV">
+                    <h1>Cadastre-se!</h1>
+                </section>
+            </header>
+            <section class="secao-principal_secao-form">
+                <form class="secao-principal_secao-form_container" action="/paratodosverem/cadastro" method="POST">
+                    <input type="text" class="secao-principal_form-texto" name="nome" placeholder="Nome" required>
+            
+                    <input type="text" class="secao-principal_form-texto" name="sobrenome" placeholder="Sobrenome" required>
+            
+                    <input type="email" class="secao-principal_form-texto" name="email" placeholder="E-mail" required>
+            
+                    <input type="password" class="secao-principal_form-texto" name="senha" placeholder="Senha" required>
+                    <input type="password" class="secao-principal_form-texto" name="senha2" placeholder="Confirme a sua senha" required>
+            
+                    <input class="secao-principal_form-cadastro" type="submit" value="CADASTRAR">
+                    <!--<input class="secao-principal_form-login" type="submit" value="LOGIN">-->
+                    <a class="secao-principal_form-login" href="./login" target="_self">LOGIN</a>
+                </form>
+            </section>
+        </div>
+    </main>
+</body>
+</html>
