@@ -68,10 +68,20 @@ app.get('/paratodosverem/leitura', checkAuthenticated, (req, res) => {
         res.render('leitura', {subject: '', name: '', entity: '', description: '', qrcodeImage: code});
     });
 });
-app.get('/paratodosverem/leitura/:id', async (req, res) => {
+/*app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
     const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
     res.render('leitura', {subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: ''});
     //console.log(assunto, nome, responsavel, descricao);
+});*/
+app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
+    try {
+        const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
+        res.render('leitura', { subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: '' });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        // Handle the error appropriately, e.g., render an error page
+        res.status(500).send("Internal Server Error");
+    }
 });
 
 app.post('/paratodosverem/cadastro', checkNotAuthenticated, async (req, res) => {
@@ -94,16 +104,37 @@ app.post('/paratodosverem/login', passport.authenticate('local',
     failureRedirect: '/paratodosverem/login',
     failureFlash: true,
 }));
-
+/*
 app.post('/paratodosverem/formulario', checkAuthenticated, async (req, res) => {
     if(await controller.insertTema(req, res)) {
         console.log("chegou aqui com sucesso");
-        res.redirect('/paratodosverem/leitura/' + controller.getIdByCodigo(req.body.codigo));
+        const redirecionamento = '/paratodosverem/leitura/' + await controller.getIdByCodigo(req.body.codigo);
+        console.log(redirecionamento);
+        res.redirect(redirecionamento);
     } else {
         console.log("não chegou aqui");
         res.redirect('/paratodosverem/leitura');
     }
+});*/
+app.post('/paratodosverem/formulario', checkAuthenticated, async (req, res) => {
+    try {
+        const inserted = await controller.insertTema(req, res);
+        if (inserted) {
+            console.log("chegou aqui com sucesso");
+            const id = await controller.getIdByCodigo(req.body.codigo);
+            const redirecionamento = '/paratodosverem/leitura/' + id;
+            console.log(redirecionamento);
+            res.redirect(redirecionamento);
+        } else {
+            console.log("não chegou aqui");
+            res.redirect('/paratodosverem/leitura');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
 });
+
 
 function checkAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {

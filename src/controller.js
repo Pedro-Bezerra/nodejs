@@ -24,14 +24,11 @@ const getTemas = (req, res) => {
 
 const getTemasById = async (req, res) => {
     try {
-        console.log(req.params.id);
-        const id = await req.params.id;
-        const parseId = parseInt(id);
-        console.log(id);
-        console.log(parseId);
-        const results = await pool.query(queries.getTemasById, [parseId]);
+        const id = parseInt(req.params.id);
+        //console.log(id);
+        const results = await pool.query(queries.getTemasById, [id]);
         const array = results.rows[0];
-        console.log(array);
+        //console.log(array);
         return array;
     } catch (error) {
         console.error(error);
@@ -97,7 +94,7 @@ const getUsuarioById = async (id) => {
 
 const getIdByCodigo = async (codigo) => {
     const results = await pool.query(queries.checkCodigoExists, [codigo]);
-    console.log(results.rows[0].id_tema);
+    //console.log(results.rows[0].id_tema);
     return results.rows[0].id_tema;
 }
 
