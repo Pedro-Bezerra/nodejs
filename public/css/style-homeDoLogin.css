@@ -1,0 +1,139 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+html, body {
+    height: 100vh;
+}
+
+.nav-menu {
+    display: flex;
+    height: 15vh;
+    background-color: #FECDA6;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-menu_logo {
+    width: 7rem;
+    height: 2.5rem;
+    padding: 1rem;
+}
+
+.nav-menu_secao-botoes {
+    padding: 1rem;
+    width: 20%;
+    
+}
+
+.nav-menu_botao {
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    width: 90%;
+    height: 3rem;
+    border-radius: 3rem;
+    border: 0;
+    background-image: linear-gradient(to bottom right, #ddd, #fff);
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-width: 1.5px;
+    border-style: solid;
+    border-bottom-color:#aaa;
+    border-right-color:#aaa;
+    border-top-color:#ddd;
+    border-left-color:#ddd;
+}
+
+.nav-menu_botao:hover {
+    background-image: linear-gradient(to bottom right, #bbb, #eee);
+}
+
+.nav-menu_botao:active {
+    background-image: linear-gradient(to bottom right, #bbb, #eee);
+    border-width: 1.5px;
+    border-style: solid;
+    border-bottom-color:#ddd;
+    border-right-color:#ddd;
+    border-top-color:#aaa;
+    border-left-color:#aaa;
+}
+
+.nav-menu_botao-img {
+    height: 50%;
+}
+
+.secao-principal {
+    width: 45%;
+    min-height: 100vh;
+    margin: 2rem auto 0 auto;
+}
+
+.secao-principal_artigo {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    max-height: 69px;
+    background-image: linear-gradient(to bottom right, #ddd, #fff);
+    border: #ccc 1px solid;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.secao-principal_artigo p {
+    margin: 0.5rem;
+    padding: 1rem;
+    max-width: 15rem;
+    overflow: hidden;
+}
+
+.secao-principal_icones {
+    width: 30%;
+    min-height: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.secao-principal_link {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 30%;
+    height: 100%;
+    background-color: #fff;
+    
+}
+
+.secao-principal_link:active {
+    background-color: rgba(255, 247, 247, 0.867)
+}
+
+.secao-principal_img-ver {
+    width: 40%;
+}
+
+.secao-principal_botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 100%;
+    background-color: rgb(255, 51, 51);
+    border: 0px;
+    cursor: pointer;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.secao-principal_botao:active {
+    background-color: rgb(255, 87, 87);
+}
+
+.secao-principal_img-lixo {
+    width: 33%;
+}

@@ -58,6 +58,10 @@ app.get('/paratodosverem/formulario', checkAuthenticated, (req, res) => {
     res.render('formulario');
 });
 
+app.get('/paratodosverem/principal', checkAuthenticated, (req, res) => {
+    res.render('homeDoLogin');
+});
+
 //app.get('/paratodosverem/leitura', (req, res) => {
 //    res.setHeader('content-header', 'text/html');
 //    res.sendFile(__dirname + '/public/telas/leitura.html');
@@ -100,7 +104,7 @@ app.post('/paratodosverem/cadastro', checkNotAuthenticated, async (req, res) => 
 
 app.post('/paratodosverem/login', passport.authenticate('local',
 {
-    successRedirect: '/paratodosverem/formulario',
+    successRedirect: '/paratodosverem/principal',
     failureRedirect: '/paratodosverem/login',
     failureFlash: true,
 }));
