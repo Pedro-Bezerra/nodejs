@@ -66,12 +66,12 @@ app.get('/paratodosverem/principal', checkAuthenticated, (req, res) => {
 //    res.setHeader('content-header', 'text/html');
 //    res.sendFile(__dirname + '/public/telas/leitura.html');
 //});
-app.get('/paratodosverem/leitura', checkAuthenticated, (req, res) => {
+/*app.get('/paratodosverem/leitura', checkAuthenticated, (req, res) => {
     qr.toDataURL('http://localhost:3000/paratodosverem', (error, code) => {
         if (error) throw error;
         res.render('leitura', {subject: '', name: '', entity: '', description: '', qrcodeImage: code});
     });
-});
+});*/
 /*app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
     const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
     res.render('leitura', {subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: ''});
@@ -79,8 +79,12 @@ app.get('/paratodosverem/leitura', checkAuthenticated, (req, res) => {
 });*/
 app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
     try {
-        const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
-        res.render('leitura', { subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: '' });
+        qr.toDataURL('http://localhost:3000/paratodosverem', async (error, code) => {
+            if (error) throw error;
+            const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
+            res.render('leitura', { subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: code });    
+        });
+        
     } catch (error) {
         console.error("Error fetching data:", error);
         // Handle the error appropriately, e.g., render an error page
