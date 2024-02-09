@@ -125,7 +125,8 @@ app.post('/paratodosverem/formulario', checkAuthenticated, async (req, res) => {
         const inserted = await controller.insertTema(req, res);
         if (inserted) {
             console.log("chegou aqui com sucesso");
-            const id = await controller.getIdByCodigo(req.body.codigo);
+            const codigo = req.body.letra + req.body.codigo;
+            const id = await controller.getIdByCodigo(codigo);
             const redirecionamento = '/paratodosverem/leitura/' + id;
             console.log(redirecionamento);
             res.redirect(redirecionamento);
