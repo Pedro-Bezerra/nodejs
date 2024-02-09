@@ -82,10 +82,32 @@ body {
     width: 80%;
 }
 
+.secao-principal_form-categoria {
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: white;
+}
+
 .secao-principal_form-texto {
     width: 95%;
     border-radius: 5px;
     padding: 0.5rem;
+}
+
+.secao-principal_secao-form_codigo {
+    display: flex;
+    row-gap: 0.5rem;
+}
+
+.secao-principal_secao-fom_codigo-letra {
+    width: 5%;
+    border-radius: 5px;
+    padding: 0.5rem;
+}
+
+.codigo {
+    width: 90%;
 }
 
 .secao-principal_form-cadastro {

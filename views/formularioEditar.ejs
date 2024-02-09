@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style-formulario.css" >
-    <script src="../scripts/fetchFormData.js"></script>
-    <title>Formulário</title>
+    <link type="text/css" href="../css/style-formulario.css" >
+    <title>Formulário de Edição</title>
 </head>
 <body>
     <main class="secao-principal">
@@ -20,17 +19,11 @@
                 </section>
             </header>
             <section class="secao-principal_secao-form">
-                <form class="secao-principal_secao-form_container" action="/paratodosverem/formulario" method="POST">
+                <form class="secao-principal_secao-form_container" action="/paratodosverem/formulario" method="PUT">
 
                     <div class="secao-principal_secao-form-conjunto">
-                        <label for="categoria">Categoria:</label>
-                        <select onchange="selecionar()" id="select" class="secao-principal_form-categoria" name="categoria" required>
-                            <option value="alimento">Alimento</option>
-                            <option value="remedio">Remédio</option>
-                            <option value="evento">Evento</option>
-                            <option value="cosmetico">Cosmético</option>
-                            <option value="outro">Outro</option>
-                        </select>
+                        <label for="assunto">Assunto:</label>
+                        <input type="text" class="secao-principal_form-texto" name="assunto" placeholder="Assunto" required>
                     </div>
                     
                     <div class="secao-principal_secao-form-conjunto">
@@ -46,10 +39,7 @@
 
                     <div class="secao-principal_secao-form-conjunto">
                         <label for="codigo">Código:</label>
-                        <section class="secao-principal_secao-form_codigo">
-                            <input readonly class="secao-principal_secao-fom_codigo-letra" type="text" name="letra" required>
-                            <input id="codigo" type="text" class="secao-principal_form-texto codigo" name="codigo" placeholder="Código" required>
-                        </section>
+                        <input type="text" class="secao-principal_form-texto" name="codigo" placeholder="Código" required>
                     </div>
                     
                     <div class="secao-principal_secao-form-conjunto">
@@ -58,7 +48,7 @@
                     </div>
                     
             
-                    <input class="secao-principal_form-cadastro" type="submit" value="INSERIR DADOS">
+                    <input class="secao-principal_form-cadastro" type="submit" value="EDITAR DADOS">
                 </form>
             </section>
         </div>

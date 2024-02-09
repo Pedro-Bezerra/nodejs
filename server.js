@@ -28,7 +28,7 @@ app.use(cors());
 app.use(express.urlencoded({
     extended: false,
     limit: 10000,
-    parameterLimit: 5,
+    parameterLimit: 6,
 }));
 app.use(flash());
 app.use(session({
@@ -155,12 +155,34 @@ function checkNotAuthenticated(req, res, next) {
     next();
 }
 
+
+app.get('/paratodosverem/formulario/editar', checkAuthenticated, (req, res) => {
+    res.render('formularioEditar');
+});
+
+
+app.put('/paratodosverem/formulario/editar', checkAuthenticated, async (req, res) => {
+    try {
+        const updated = await controller.updateTema(req, res);
+        if (updated) {
+            console.log("atualizou com sucesso");
+            const id = await controller.getIdByCodigo(req.body.codigo);
+            const redirecionamento = '/paratodosverem/leitura/' + id;
+            console.log(redirecionamento);
+            res.redirect(redirecionamento);
+        } else {
+            console.log("não chegou aqui");
+            res.redirect('/paratodosverem/leitura');
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
+
 app.get('/', (req, res) => {
-    qr.toDataURL('http://localhost:3000/paratodosverem', (error, code) => {
-        if (error) throw error;
-        res.render('teste', { qrcodeImage: code });
-    });
-    //res.render('teste', { qrcodeImage: qrcode });
+    res.render('home');
 })
 
 app.listen(port,  () => console.info("servidor na porta 3000 inicializado"));

@@ -14,3 +14,11 @@ form.addEventListener('submit', (e) => {
         }
     });
 })
+
+
+function selecionar() {
+    const categoria = document.getElementById('select');
+    const codigo = document.querySelector('.secao-principal_secao-fom_codigo-letra');
+    codigo.value = categoria.value[0].toUpperCase();
+}
+

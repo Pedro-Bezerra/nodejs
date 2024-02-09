@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style-leitura.css">
-    <script src="../scripts/pressionarLink.js"></script>
+    <link rel="stylesheet" text="text/css" href="../css/style-leitura.css">
     <title>Leitura</title>
 </head>
 <body>
@@ -12,18 +11,35 @@
         <img class="nav-menu_logo" src="../images/PTV (copy).png" alt="PTV">
         <section class="nav-menu_secao-botoes">
             <button onclick="pressionarLink('#container-principal')" class="nav-menu_botao link"><img class="nav-menu_botao-img" src="../images/link-45deg.svg" alt="link"></button>
-            <button class="nav-menu_botao edicao"><img class="nav-menu_botao-img" src="../images/pencil-fill.svg" alt="editar"></button>
+            <a onclick="editar()" href="#" class="nav-menu_botao edicao"><img class="nav-menu_botao-img" src="../images/pencil-fill.svg" alt="editar"></a>
             <button class="nav-menu_botao audio"><img class="nav-menu_botao-img" src="../images/volume-up-fill.svg" alt="volume"></button>
         </section>
     </nav>
     <main class="secao-principal">
         <div id="container-principal" class="secao-principal_container">
-            <p>Assunto: <%= subject %></p>
-            <p>Nome: <%= name %></p>
-            <p>Responsável: <%= entity %></p>
-            <p>Descrição: <%= description %></p>
+            <section>
+                <label for="categoria">Categoria: </label>
+                <input disabled class="secao-principal_container-input" type="text" name="categoria" value=<%= subject %>>
+            </section>
+            
+            <section>
+                <label for="nome">Nome: </label>
+                <input disabled class="secao-principal_container-input" type="text" name="nome" value=<%= name %>>
+            </section>
+            
+            <section>
+                <label for="responsavel">Responsável: </label>
+                <input disabled class="secao-principal_container-input" type="text" name="responsavel" value=<%= entity %>>
+            </section>
+            
+            <section>
+                <label for="descricao">Descrição: </label>
+                <input disabled class="secao-principal_container-input" type="text" name="descricao" value=<%= description %>>
+            </section>
+            
             <input type="hidden" id="qrcode-data" value=<%= qrcodeImage%>>
         </div>
     </main>
 </body>
+    <script text="text/javascript" src="../scripts/pressionarLink.js"></script>
 </html>

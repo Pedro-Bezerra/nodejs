@@ -22,8 +22,12 @@ function gerarQRcode(id, idQRCode, class1, class2) {
      <button onClick="fazerDownload()" class="conteudo-principal_secao-qrcode_download"><img class="nav-menu_botao-img" src="../images/download.svg" alt="link">DOWNLOAD</button>`;
 }
 
-function copiarLink() {
-    navigator.clipboard.writeText(window.location.href);
+
+
+function editar() {
+    const dados = document.getElementsByClassName('secao-principal_container-input').values;
+    console.log(dados);
+    console.log('oi');
 }
 
 `<button class="conteudo-principal_secao-qrcode_imagem"><img class="nav-menu_botao-qrcode" src="../images/qr-code.svg" alt="link"></button>

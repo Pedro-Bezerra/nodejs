@@ -5,6 +5,12 @@ const checkCodigoExists = "SELECT id_tema FROM temas WHERE codigo = $1";
 const insertUsuario = "INSERT INTO usuarios(nome, sobrenome, email, senha) VALUES ($1, $2, $3, $4)";
 const checkEmail = "SELECT * FROM usuarios WHERE email = $1"
 const checkId = "SELECT * FROM usuarios WHERE id_usuario = $1"
+const updateTema = `UPDATE temas 
+SET assunto = $1,
+	nome = $2,
+	responsavel = $3,
+	descricao = $4
+WHERE codigo = $5`;
 
 module.exports = {
     getTemas, 
@@ -14,4 +20,5 @@ module.exports = {
     insertUsuario,
     checkEmail,
     checkId,
+    updateTema,
 }

@@ -54,18 +54,19 @@ const getTemasById = async (req, res) => {
 };*/
 
 const insertTema = async (req, res) => {
-    const { assunto, nome, responsavel, codigo, descricao } = req.body;
+    let { categoria, nome, responsavel, letra, codigo, descricao } = req.body;
+    codigo = letra + codigo;
     const resultados = await pool.query(queries.checkCodigoExists, [codigo]);
     if (!resultados.rows.length) {
         try {
-            const temas = await pool.query(queries.insertTema, [assunto, nome, responsavel, codigo, descricao]);
+            const temas = await pool.query(queries.insertTema, [categoria, nome, responsavel, codigo, descricao]);
             return true;
         } catch (error) {
             console.error(error);
             throw error;
         }
     }
-    console.log('já foi cadastrado');
+    console.log('não foi cadastrado');
     return false;
 };
 
@@ -98,6 +99,22 @@ const getIdByCodigo = async (codigo) => {
     return results.rows[0].id_tema;
 }
 
+const updateTema = async (req, res) => {
+    const { assunto, nome, responsavel, codigo, descricao } = req.body;
+    const resultados = await pool.query(queries.checkCodigoExists, [codigo]);
+    if (!resultados.rows.length) {
+        try {
+            const temas = await pool.query(queries.updateTema, [assunto, nome, responsavel, descricao, codigo]);
+            return true;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+    console.log('já foi cadastrado');
+    return false;
+}
+
 module.exports = {
     getTemas, 
     getTemasById,
@@ -105,5 +122,6 @@ module.exports = {
     insertUsuario,
     getUsuarioByEmail,
     getUsuarioById,
-    getIdByCodigo
+    getIdByCodigo,
+    updateTema,
 }
