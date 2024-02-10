@@ -82,7 +82,8 @@ app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
         qr.toDataURL('http://localhost:3000/paratodosverem', async (error, code) => {
             if (error) throw error;
             const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
-            res.render('leitura', { subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: code });    
+            console.log(descricao)
+            res.render('leitura', { subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: code, temaCode: codigo });    
         });
         
     } catch (error) {
@@ -161,18 +162,17 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 
-app.get('/paratodosverem/formulario/editar', checkAuthenticated, (req, res) => {
+app.get('/paratodosverem/formulario/editar/:id', checkAuthenticated, (req, res) => {
     res.render('formularioEditar');
 });
 
 
-app.put('/paratodosverem/formulario/editar', checkAuthenticated, async (req, res) => {
+app.post('/paratodosverem/formulario/editar/:id', checkAuthenticated, async (req, res) => {
     try {
         const updated = await controller.updateTema(req, res);
         if (updated) {
             console.log("atualizou com sucesso");
-            const id = await controller.getIdByCodigo(req.body.codigo);
-            const redirecionamento = '/paratodosverem/leitura/' + id;
+            const redirecionamento = '/paratodosverem/leitura/' + req.params.id;
             console.log(redirecionamento);
             res.redirect(redirecionamento);
         } else {

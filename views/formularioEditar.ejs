@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/style-formulario.css" >
+    <link rel="stylesheet" href="../../../css/style-formulario.css" >
+    <script src="../../../scripts/edicao.js"></script>
     <title>Formulário de Edição</title>
 </head>
 <body>
@@ -11,23 +12,23 @@
         <div class="secao-principal_container">
             <header class="secao-principal_container-cabecalho">
                 <section class="secao-principal_container-secao-menu">
-                    <img class="secao-principal_container-cabecalho_img-menu" src="../../images/menu-lines.png" alt="três linhas do menu">
+                    <img class="secao-principal_container-cabecalho_img-menu" src="../../../images/menu-lines.png" alt="três linhas do menu">
                 </section>
                 <section class="secao-principal_container-secao-logo">
-                    <img class="secao-principal_container-cabecalho_img-logo" src="../../images/PTV.png" alt="logo PTV">
+                    <img class="secao-principal_container-cabecalho_img-logo" src="../../../images/PTV.png" alt="logo PTV">
                     <h1>Insira os dados</h1>
                 </section>
             </header>
             <section class="secao-principal_secao-form">
-                <form class="secao-principal_secao-form_container" action="/paratodosverem/formulario" method="PUT">
+                <form class="secao-principal_secao-form_container" action="/paratodosverem/formulario/editar/" method="POST">
 
                     <div class="secao-principal_secao-form-conjunto">
                         <label for="categoria">Categoria:</label>
                         <select onchange="selecionar()" id="select" class="secao-principal_form-categoria" name="categoria" required>
                             <option value="alimento">Alimento</option>
-                            <option value="remedio">Remédio</option>
+                            <option value="remédio">Remédio</option>
                             <option value="evento">Evento</option>
-                            <option value="cosmetico">Cosmético</option>
+                            <option value="cosmético">Cosmético</option>
                             <option value="outro">Outro</option>
                         </select>
                     </div>

@@ -10,7 +10,7 @@ SET assunto = $1,
 	nome = $2,
 	responsavel = $3,
 	descricao = $4
-WHERE codigo = $5`;
+WHERE id_tema = $5`;
 
 module.exports = {
     getTemas, 

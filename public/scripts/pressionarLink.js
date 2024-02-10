@@ -1,3 +1,4 @@
+
 function pressionarLink(id) {
     const container = document.querySelector(id);
     container.innerHTML += 
@@ -27,9 +28,17 @@ function copiarLink() {
 }
 
 function editar() {
-    const dados = document.getElementsByClassName('secao-principal_container-input').values;
+    const dados = document.getElementsByClassName('secao-principal_container-input');
+    const id = window.location.href.slice(-1);
+    const link = document.getElementsByClassName('nav-menu_botao edicao');
+    link[0].href += id;
+    localStorage["categoria"] = dados[0].value;
+    localStorage["nome"] = dados[1].value;
+    localStorage["responsavel"] = dados[2].value;
+    localStorage["descricao"] = dados[3].value;
+    localStorage["codigo"] = dados[4].value;
     console.log(dados);
-    console.log('oi');
+    console.log(window.location.href.slice(-1));
 }
 
 `<button class="conteudo-principal_secao-qrcode_imagem"><img class="nav-menu_botao-qrcode" src="../images/qr-code.svg" alt="link"></button>

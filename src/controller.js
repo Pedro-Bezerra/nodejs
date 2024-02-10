@@ -28,7 +28,7 @@ const getTemasById = async (req, res) => {
         //console.log(id);
         const results = await pool.query(queries.getTemasById, [id]);
         const array = results.rows[0];
-        //console.log(array);
+        console.log(array);
         return array;
     } catch (error) {
         console.error(error);
@@ -83,6 +83,11 @@ const insertUsuario = (req, res, senha) => {
     });
 };
 
+const getTemaById = async (id) => {
+    const results = await pool.query(queries.getTemasById);
+    return results.rows[0];
+}
+
 const getUsuarioByEmail = async (email) => {
     const results = await pool.query(queries.checkEmail, [email]);
     return results.rows[0];
@@ -100,18 +105,21 @@ const getIdByCodigo = async (codigo) => {
 }
 
 const updateTema = async (req, res) => {
-    const { assunto, nome, responsavel, codigo, descricao } = req.body;
-    const resultados = await pool.query(queries.checkCodigoExists, [codigo]);
-    if (!resultados.rows.length) {
+    let { categoria, letra, nome, responsavel, codigo, descricao } = req.body;
+    codigo = letra + codigo;
+    console.log(codigo);
+    const resultados = await pool.query(queries.getTemasById, [req.params.id]);
+    if (resultados.rows.length) {
         try {
-            const temas = await pool.query(queries.updateTema, [assunto, nome, responsavel, descricao, codigo]);
+            const temas = await pool.query(queries.updateTema, [categoria, nome, responsavel, descricao, req.params.id]);
+            console.log(temas);
             return true;
         } catch (error) {
             console.error(error);
             throw error;
         }
     }
-    console.log('já foi cadastrado');
+    console.log('não foi cadastrado');
     return false;
 }
 
@@ -124,4 +132,5 @@ module.exports = {
     getUsuarioById,
     getIdByCodigo,
     updateTema,
+    getTemaById,
 }
