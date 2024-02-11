@@ -41,5 +41,101 @@ function editar() {
     console.log(window.location.href.slice(-1));
 }
 
+
+function fazerDownload() {
+    const url = document.querySelector('.nav-menu_botao-qrcode').getAttribute('src');
+    console.log(url);
+	const blob = new Blob([url], { type: "img/png"});
+    console.log(blob);
+	const href = URL.createObjectURL(blob);
+    console.log(href);
+	const a = Object.assign(document.createElement("a"), {
+	href,
+	style: "display:none",
+	download: 'qrcode.png',
+	});
+	document.body.appendChild(a);
+	
+	a.click();
+	URL.revokeObjectURL(href);
+	a.remove();
+}
+
+function ouvir() {
+    const textos = document.querySelectorAll('.secao-principal_container-input');
+    const labels = document.querySelectorAll('.secao-principal_container-label');
+    const imagem = document.querySelector('#img-audio');
+    imagem.setAttribute('src', '../../images/stop-fill.svg');
+    adicionarBotaoPausa(); 
+    playTexto(montarTexto(labels, textos));
+    document.querySelector('#audio').onclick = encerrar;
+}
+
+function montarTexto(tema, conteudo) {
+    let texto = '';
+    for(let i = 0; i < 4; i++) {
+        texto += tema[i].textContent;
+        texto += conteudo[i].value + ".\n";
+    }
+    return texto;
+}
+
+function playTexto(texto) {
+    console.log(texto);
+    const utterance = new SpeechSynthesisUtterance(texto);
+    utterance.lang = 'pt-br'
+    utterance.rate = 0.85;
+    speechSynthesis.speak(utterance);
+    utterance.onend = encerrar;
+}
+
+function adicionarBotaoPausa() {
+    const secao = document.querySelector('.nav-menu_secao-botoes');
+    let pausa = document.querySelector('#botao-pausar');
+    if (!pausa) {
+        secao.innerHTML += `<button id="botao-pausar" class="nav-menu_botao pausar"><img id="img-pausa" class="nav-menu_botao-img" src="../../images/pause-fill.svg" alt="pausar"></button>`
+        pausa = document.querySelector('#botao-pausar');
+        pausa.onclick = mudarImagem();
+    }
+}
+
+function mudarImagem() {
+    const pausa = document.querySelector('#botao-pausar');
+    pausa.addEventListener('click', (e) => {
+        const imagem = document.querySelector('#img-pausa');
+        if (imagem.getAttribute('src') == '../../images/pause-fill.svg') {
+            imagem.setAttribute('src', '../../images/play-fill.svg');
+            pausarTexto();
+        } else {
+            imagem.setAttribute('src', '../../images/pause-fill.svg');
+            resumirTexto();
+        }
+        
+    });
+}
+
+function pausarTexto() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.pause();
+    }
+}
+
+function resumirTexto() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.resume();
+    }
+}
+
+function encerrar() {
+    if (speechSynthesis.speaking) {
+        speechSynthesis.cancel();
+    }
+    if (document.querySelector('#img-audio').getAttribute('src') === '../../images/stop-fill.svg') {
+        document.querySelector('#botao-pausar').remove();
+        document.querySelector('#img-audio').setAttribute('src', '../../images/volume-up-fill.svg');  
+    }
+    document.querySelector('#audio').onclick = ouvir;
+}
+
 `<button class="conteudo-principal_secao-qrcode_imagem"><img class="nav-menu_botao-qrcode" src="../images/qr-code.svg" alt="link"></button>
  <button class="conteudo-principal_secao-qrcode_download"><img class="nav-menu_botao-img" src="../images/download.svg" alt="link">DOWNLOAD</button>`
