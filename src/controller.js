@@ -55,11 +55,12 @@ const getTemasById = async (req, res) => {
 
 const insertTema = async (req, res) => {
     let { categoria, nome, responsavel, letra, codigo, descricao } = req.body;
+    const id_usuario = req.session.passport.user;
     codigo = letra + codigo;
     const resultados = await pool.query(queries.checkCodigoExists, [codigo]);
     if (!resultados.rows.length) {
         try {
-            const temas = await pool.query(queries.insertTema, [categoria, nome, responsavel, codigo, descricao]);
+            const temas = await pool.query(queries.insertTema, [categoria, nome, responsavel, codigo, descricao, id_usuario]);
             return true;
         } catch (error) {
             console.error(error);

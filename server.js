@@ -55,6 +55,7 @@ app.get('/paratodosverem/login', checkNotAuthenticated, (req, res) => {
 });
 
 app.get('/paratodosverem/formulario', checkAuthenticated, (req, res) => {
+    console.log(req.session.passport.user)
     res.render('formulario');
 });
 
@@ -81,9 +82,9 @@ app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
     try {
         qr.toDataURL('http://localhost:3000/paratodosverem', async (error, code) => {
             if (error) throw error;
-            const { id_tema, assunto, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
+            const { id_tema, categoria, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
             console.log(descricao)
-            res.render('leitura', { subject: assunto, name: nome, entity: responsavel, description: descricao, qrcodeImage: code, temaCode: codigo });    
+            res.render('leitura', { subject: categoria, name: nome, entity: responsavel, description: descricao, qrcodeImage: code, temaCode: codigo });    
         });
         
     } catch (error) {
