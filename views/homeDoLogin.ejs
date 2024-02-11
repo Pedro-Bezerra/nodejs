@@ -21,7 +21,7 @@
                 <p><%= item.nome %></p>
                 <section class="secao-principal_icones">
                     <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                    <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
+                    <button onclick="remover(event)" class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
                 </section>
             </section>
             <input type="hidden" class="id-tema" value=<%= item.id_tema %>>

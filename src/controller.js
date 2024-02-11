@@ -139,6 +139,16 @@ const updateTema = async (req, res) => {
     return false;
 }
 
+const deleteTema = async (codigo) => {
+    try {
+        const removido = await pool.query(queries.deleteTema, [codigo]);
+        return true;
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+}
+
 module.exports = {
     getTemas, 
     getTemasById,
@@ -150,4 +160,5 @@ module.exports = {
     updateTema,
     getTemaById,
     getTemasByUsuario,
+    deleteTema,
 }

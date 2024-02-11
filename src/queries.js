@@ -12,6 +12,7 @@ SET categoria = $1,
 	descricao = $4
 WHERE id_tema = $5`;
 const getTemasByUsuario = "SELECT id_tema, codigo, nome FROM TEMAS WHERE id_usuario = $1";
+const deleteTema = "DELETE FROM temas WHERE codigo = $1";
 
 module.exports = {
     getTemas, 
@@ -23,4 +24,5 @@ module.exports = {
     checkId,
     updateTema,
     getTemasByUsuario,
+    deleteTema,
 }

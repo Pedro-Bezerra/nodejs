@@ -10,9 +10,11 @@ const passport = require('passport');
 const flash = require('express-flash');
 const session = require('express-session');
 const qr = require('qrcode');
+const WebSocket = require('ws');
 const controller = require('./src/controller');
 const app = express();
 const port = 3000;
+
 
 const iniciarPassport = require('./passport-config');
 const { checkCodigoExists } = require('./src/queries');
@@ -192,4 +194,17 @@ app.get('/', (req, res) => {
     res.render('home');
 })
 
-app.listen(port,  () => console.info("servidor na porta 3000 inicializado"));
+let server = app.listen(port,  () => console.info("servidor na porta 3000 inicializado"));
+const wss = new WebSocket.Server({ server: server });
+
+wss.on('connection', function connection(ws) {
+    console.log('Conectei pelo WebSocket');
+    ws.send('WebSocket conectado com sucesso');
+    ws.on('message', function incoming(message) {
+        console.log('Código recebido: %s', message);
+        controller.deleteTema(message);
+        console.log('Tema removido com sucesso');
+    })
+
+});
+
