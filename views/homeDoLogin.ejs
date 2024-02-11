@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style-homeDoLogin.css">
+    <script src="../scripts/temasCadastrados.js"></script>
     <title>Página do Usuário</title>
 </head>
-<body>
+<body onload="editarLink()">
     <nav class="nav-menu">
         <img class="nav-menu_logo" src="../images/PTV (copy).png" alt="PTV">
         <section class="nav-menu_secao-botoes">
@@ -14,62 +15,17 @@
         </section>
     </nav>
     <main class="secao-principal">
-        <section  class="secao-principal_artigo">
-            <p>ADS6713</p>
-            <p>Hackathon</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
+        <% array.forEach((item) => { %>
+            <section class="secao-principal_artigo">
+                <p><%= item.codigo %></p>
+                <p><%= item.nome %></p>
+                <section class="secao-principal_icones">
+                    <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
+                    <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
+                </section>
             </section>
-        </section>
-        <section  class="secao-principal_artigo">
-            <p>G316AD</p>
-            <p>Pasta de amendoim integral</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
-            </section>
-        </section>
-        <section  class="secao-principal_artigo">
-            <p>HDSA71</p>
-            <p>TestandoTestandoTestandoTestandoTestandoTestandoTestando</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
-            </section>
-        </section>
-        <section  class="secao-principal_artigo">
-            <p>133H1A</p>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus ipsa blanditiis magni impedit non, voluptates vitae repellat cupiditate sint dignissimos? Tempora nihil obcaecati saepe modi. Modi dicta nisi vero tempore.</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
-            </section>
-        </section>
-        <section  class="secao-principal_artigo">
-            <p>G316AD</p>
-            <p>Pasta de amendoim integral</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
-            </section>
-        </section>
-        <section  class="secao-principal_artigo">
-            <p>G316AD</p>
-            <p>Pasta de amendoim integral</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
-            </section>
-        </section>
-        <section  class="secao-principal_artigo">
-            <p>G316AD</p>
-            <p>Pasta de amendoim integral</p>
-            <section class="secao-principal_icones">
-                <a class="secao-principal_link" href="./leitura" target="_self"><img class="secao-principal_img-ver" src="../images/eye-fill.svg" alt="visualizar artigo"></a>
-                <button class="secao-principal_botao"><img class="secao-principal_img-lixo" src="../images/trash3.svg"></button>
-            </section>
-        </section>
+            <input type="hidden" class="id-tema" value=<%= item.id_tema %>>
+        <% }) %>
     </main>
 </body>
 </html>

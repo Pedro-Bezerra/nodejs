@@ -36,6 +36,21 @@ const getTemasById = async (req, res) => {
     }
 };
 
+const getTemasByUsuario = async (req, res) => {
+    try {
+        const id = req.session.passport.user;
+        const results = await pool.query(queries.getTemasByUsuario, [id]);
+        console.log(results.rows);
+        if (results) {
+            return results.rows;
+        } 
+        return null
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+}
+
 /*const insertTema = (req, res) => {
     const { assunto, nome, responsavel, codigo, descricao } = req.body;
     pool.query(queries.checkCodigoExists, [codigo], (error, results) => {
@@ -134,4 +149,5 @@ module.exports = {
     getIdByCodigo,
     updateTema,
     getTemaById,
+    getTemasByUsuario,
 }

@@ -6,11 +6,12 @@ const insertUsuario = "INSERT INTO usuarios(nome, sobrenome, email, senha) VALUE
 const checkEmail = "SELECT * FROM usuarios WHERE email = $1"
 const checkId = "SELECT * FROM usuarios WHERE id_usuario = $1"
 const updateTema = `UPDATE temas 
-SET assunto = $1,
+SET categoria = $1,
 	nome = $2,
 	responsavel = $3,
 	descricao = $4
 WHERE id_tema = $5`;
+const getTemasByUsuario = "SELECT id_tema, codigo, nome FROM TEMAS WHERE id_usuario = $1";
 
 module.exports = {
     getTemas, 
@@ -21,4 +22,5 @@ module.exports = {
     checkEmail,
     checkId,
     updateTema,
+    getTemasByUsuario,
 }

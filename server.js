@@ -59,8 +59,9 @@ app.get('/paratodosverem/formulario', checkAuthenticated, (req, res) => {
     res.render('formulario');
 });
 
-app.get('/paratodosverem/principal', checkAuthenticated, (req, res) => {
-    res.render('homeDoLogin');
+app.get('/paratodosverem/principal', checkAuthenticated, async (req, res) => {
+    const vetor = await controller.getTemasByUsuario(req, res);
+    res.render('homeDoLogin', { array: vetor });
 });
 
 //app.get('/paratodosverem/leitura', (req, res) => {
@@ -80,7 +81,7 @@ app.get('/paratodosverem/principal', checkAuthenticated, (req, res) => {
 });*/
 app.get('/paratodosverem/leitura/:id', checkAuthenticated, async (req, res) => {
     try {
-        qr.toDataURL('http://localhost:3000/paratodosverem', async (error, code) => {
+        qr.toDataURL('http://localhost:3000/paratodosverem/' + req.params.id, async (error, code) => {
             if (error) throw error;
             const { id_tema, categoria, nome, responsavel, codigo, descricao } = await controller.getTemasById(req, res);
             console.log(descricao)
