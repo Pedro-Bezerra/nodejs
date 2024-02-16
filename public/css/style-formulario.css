@@ -35,6 +35,17 @@ body {
     position: relative;
 }
 
+.secao-principal_container-cabecalho_img-home {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40px;
+    height: 40px;
+    padding: 15px 0px 0px 20px;
+    cursor: pointer;
+
+}
+
 .secao-principal_container-cabecalho_img-menu {
     position: absolute;
     top: 0px;
