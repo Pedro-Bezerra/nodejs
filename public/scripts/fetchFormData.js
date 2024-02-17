@@ -19,6 +19,14 @@ form.addEventListener('submit', (e) => {
 function selecionar() {
     const categoria = document.getElementById('select');
     const codigo = document.querySelector('.secao-principal_secao-fom_codigo-letra');
+    const restoCodigo = document.querySelector('#codigo');
     codigo.value = categoria.value[0].toUpperCase();
+    if (codigo.value === '-') {
+        codigo.value = '';
+        restoCodigo.value = '';
+        restoCodigo.setAttribute('readonly', true);
+        return;
+    }
+    restoCodigo.removeAttribute('readonly');
 }
 
