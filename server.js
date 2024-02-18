@@ -11,6 +11,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const qr = require('qrcode');
 const WebSocket = require('ws');
+const methodOverride = require('method-override')
 const controller = require('./src/controller');
 const app = express();
 const port = 3000;
@@ -40,7 +41,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use(methodOverride('_method'))
 //app.use('/paratodosverem', srcRoutes);
 app.set('view engine', 'ejs');
 
@@ -208,3 +209,11 @@ wss.on('connection', function connection(ws) {
 
 });
 
+app.delete('/paratodosverem/logout', checkAuthenticated, (req, res) => {
+    req.logout((err) => {
+        if (err) {
+            return console.log(err)
+        }
+        res.redirect('/paratodosverem');
+    });
+})

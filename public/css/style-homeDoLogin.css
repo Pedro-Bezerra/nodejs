@@ -68,10 +68,20 @@ html, body {
     border-left-color:#aaa;
 }
 
-.nav-menu_logout {
+.nav-menu_form {
     width: 10%;
     height: 3rem;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-menu_botao-logout {
+    background:url(../images/door-open-fill.svg) no-repeat;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
     cursor: pointer;
+    border: none;
 }
 
 .nav-menu_botao-img {

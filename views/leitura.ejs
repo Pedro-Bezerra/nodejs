@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" text="text/css" href="../../css/style-leitura.css">
+    <link rel="icon" type="image/x-icon" href="../../images/PTV.png">
     <script text="text/javascript" src="../../scripts/pressionarLink.js"></script>
     <title>Leitura</title>
 </head>
@@ -19,7 +20,9 @@
                 <a onclick="editar()" href="/paratodosverem/formulario/editar/" class="nav-menu_botao edicao"><img class="nav-menu_botao-img" src="../../images/pencil-fill.svg" alt="editar"></a>
                 <button id="audio" onclick="ouvir()" class="nav-menu_botao audio"><img id="img-audio" class="nav-menu_botao-img" src="../../images/volume-up-fill.svg" alt="volume"></button>
             </section>
-            <img role="img" class="nav-menu_img-logout" src="../../images/door-open-fill.svg" alt="logout">
+            <form class="nav-menu_form" action="/paratodosverem/logout?_method=DELETE" method="POST">
+                <button class="nav-menu_botao-logout" type="submit"></button>
+            </form>
         </section>
     </nav>
     <main class="secao-principal">

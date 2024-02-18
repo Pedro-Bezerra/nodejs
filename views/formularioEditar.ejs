@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../../css/style-formulario.css" >
+    <link rel="icon" type="image/x-icon" href="../../../images/PTV.png">
     <script src="../../../scripts/edicao.js"></script>
     <title>Formulário de Edição</title>
 </head>
@@ -13,7 +14,9 @@
             <header class="secao-principal_container-cabecalho">
                 <section class="secao-principal_container-secao-menu">
                     <a href="/paratodosverem/principal"><img class="secao-principal_container-cabecalho_img-home" src="../../../images/house-fill.svg" alt="home"></a>
-                    <img role="img" class="secao-principal_container-cabecalho_img-menu" src="../../../images/door-open-fill.svg" alt="logout">
+                    <form class="secao-principal_container-cabecalho_form-logout" action="/paratodosverem/logout?_method=DELETE" method="POST">
+                        <button class="secao-principal_container-cabecalho_botao-logout" type="submit"></button>
+                    </form>                
                 </section>
                 <section class="secao-principal_container-secao-logo">
                     <img class="secao-principal_container-cabecalho_img-logo" src="../../../images/PTV.png" alt="logo PTV">
