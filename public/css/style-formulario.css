@@ -16,6 +16,14 @@ body {
 .secao-principal {
     width: 40%;
     min-height: 85vh;
+    box-shadow:
+    0px 20px 20px rgba(0,0,0,0.2),
+    0px 5px 10px rgba(0,0,0,0.2),
+    0px 70px 50px rgba(0,0,0,0.4),
+    30px 50px 50px rgba(0,0,0,0.2),
+    -30px 50px 50px rgba(0,0,0,0.2),
+    inset 0px 0px 0px rgba(0,0,0,0.1),
+    inset 0px 0px 0px rgba(0,0,0,0.1);
 }
 
 .secao-principal_container {
@@ -85,6 +93,7 @@ body {
     width: 90%;
     margin: auto;
     margin-top: 2rem;
+    
 }
 
 .secao-principal_secao-form_container {
