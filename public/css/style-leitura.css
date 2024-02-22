@@ -131,6 +131,7 @@ html, body {
     border: 0px;
     color: #000;
     font-size: 1rem;
+    width: 80%;
 }
 
 .conteudo-principal_secao-qrcode {

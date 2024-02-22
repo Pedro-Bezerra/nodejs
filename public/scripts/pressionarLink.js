@@ -1,6 +1,7 @@
 
 function pressionarLink(id) {
     const container = document.querySelector(id);
+    const containerPrincipal = document.querySelector('.secao-principal');
     container.innerHTML += 
     `<section class="conteudo-principal_secao-qrcode">
         <h1>COMPARTILHAR</h1>
@@ -9,6 +10,7 @@ function pressionarLink(id) {
             <button onClick="copiarLink()" class="conteudo-principal_secao-qrcode_botao"><img class="nav-menu_botao-img" src="../../images/link-45deg.svg" alt="link">Copiar link</button>
         </section>
     </section>`;
+    //containerPrincipal.style.filter = "blur(6px)";
 }
 
 function gerarQRcode(id, idQRCode, class1, class2) {
@@ -45,21 +47,27 @@ function editar() {
 function fazerDownload() {
     const url = document.querySelector('.nav-menu_botao-qrcode').getAttribute('src');
     console.log(url);
-	const blob = new Blob([url], { type: "img/png"});
-    console.log(blob);
-	const href = URL.createObjectURL(blob);
-    console.log(href);
-	const a = Object.assign(document.createElement("a"), {
-	href,
-	style: "display:none",
-	download: 'qrcode.png',
-	});
-	document.body.appendChild(a);
-	
-	a.click();
-	URL.revokeObjectURL(href);
-	a.remove();
+    fetch(url)
+        .then(response => response.blob())
+        .then(blob => {
+            console.log(blob);
+            const href = URL.createObjectURL(blob);
+            console.log(href);
+            const a = Object.assign(document.createElement("a"), {
+                href,
+                style: "display:none",
+                download: 'qrcode.png',
+            });
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(href);
+            a.remove();
+        })
+        .catch(error => {
+            console.error('Error fetching the image:', error);
+        });
 }
+
 
 function ouvir() {
     const textos = document.querySelectorAll('.secao-principal_container-input');
