@@ -17,11 +17,11 @@ body {
     width: 40%;
     min-height: 85vh;
     box-shadow:
-    0px 20px 20px rgba(0,0,0,0.2),
-    0px 5px 10px rgba(0,0,0,0.2),
-    0px 70px 50px rgba(0,0,0,0.4),
-    30px 50px 50px rgba(0,0,0,0.2),
-    -30px 50px 50px rgba(0,0,0,0.2),
+    0px 10px 20px rgba(0,0,0,0.1),
+    0px 5px 10px rgba(0,0,0,0.1),
+    0px 30px 30px rgba(0,0,0,0.1),
+    30px 30px 30px rgba(0,0,0,0.1),
+    -30px 30px 30px rgba(0,0,0,0.1),
     inset 0px 0px 0px rgba(0,0,0,0.1),
     inset 0px 0px 0px rgba(0,0,0,0.1);
 }
@@ -146,4 +146,43 @@ body {
     background-color: #F4BF96;
     margin-bottom: 1rem;
     cursor: pointer;
+}
+
+@media screen and (max-width:700px) {
+    .secao-principal {
+        width: 75%;
+        min-height: 85vh;
+        box-shadow:
+        0px 10px 20px rgba(0,0,0,0.1),
+        0px 5px 10px rgba(0,0,0,0.1),
+        0px 30px 30px rgba(0,0,0,0.1),
+        30px 30px 30px rgba(0,0,0,0.1),
+        -30px 30px 30px rgba(0,0,0,0.1),
+        inset 0px 0px 0px rgba(0,0,0,0.1),
+        inset 0px 0px 0px rgba(0,0,0,0.1);
+    }
+
+    .secao-principal_form-categoria {
+        width: 100%;
+        border-radius: 5px;
+        padding: 0.5rem;
+        background-color: white;
+    }
+    
+    .secao-principal_form-texto {
+        width: 90%;
+        border-radius: 5px;
+        padding: 0.5rem;
+    }
+    
+    .secao-principal_secao-form_codigo {
+        display: flex;
+        row-gap: 0.5rem;
+    }
+    
+    .secao-principal_secao-fom_codigo-letra {
+        width: 5%;
+        border-radius: 5px;
+        padding: 0.5rem;
+    }
 }

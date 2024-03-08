@@ -36,6 +36,10 @@ body {
 
 .secao-principal_container-botoes {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    row-gap: 1rem;
     width: 100%;
     justify-content: center;
     column-gap: 3rem;
@@ -43,7 +47,7 @@ body {
 
 .secao-principal_container-botoes_cadastro {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    width: 18%;
+    width: 24%;
     border-radius: 5px;
     padding: 0.8rem;
     background-color: #F4BF96;
@@ -61,7 +65,7 @@ body {
 
 .secao-principal_container-botoes_login {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    width: 18%;
+    width: 24%;
     border-radius: 5px;
     padding: 0.8rem;
     background-color: #fff;
@@ -75,4 +79,69 @@ body {
     border-right-color:#aaa;
     border-top-color:#ddd;
     border-left-color:#ddd;
+}
+
+/*************************************************************************************************************************/
+
+@media screen and (max-width: 700px) {
+
+    .secao-principal {
+        width: 60%;
+        min-height: 85vh;
+        margin: auto;
+        position:absolute;
+        top: 30%;
+        left: 18%;
+    }
+
+    .secao-principal_container-logo {
+        width: 50%;
+    }
+
+    .secao-principal_container-botoes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        row-gap: 1rem;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .secao-principal_container-botoes_cadastro {
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        width: 50%;
+        border-radius: 5px;
+        padding: 0.8rem;
+        background-color: #F4BF96;
+        text-decoration: none;
+        color: black;
+        font-size: 0.8rem;
+        text-align: center;
+        border-width: 1.5px;
+        border-style: solid;
+        border-bottom-color:#aaa;
+        border-right-color:#aaa;
+        border-top-color:#ddd;
+        border-left-color:#ddd;
+    }
+    
+    .secao-principal_container-botoes_login {
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        width: 50%;
+        border-radius: 5px;
+        padding: 0.8rem;
+        background-color: #fff;
+        font-size: 0.8rem;
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        border-width: 1.5px;
+        border-style: solid;
+        border-bottom-color:#aaa;
+        border-right-color:#aaa;
+        border-top-color:#ddd;
+        border-left-color:#ddd;
+    }
+    
 }

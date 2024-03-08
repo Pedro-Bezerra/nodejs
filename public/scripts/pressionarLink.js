@@ -1,4 +1,3 @@
-
 function pressionarLink(id) {
     const container = document.querySelector(id);
     const containerPrincipal = document.querySelector('.secao-principal');
@@ -28,6 +27,7 @@ function gerarQRcode(id, idQRCode, class1, class2) {
 function copiarLink() {
     navigator.clipboard.writeText(window.location.href);  
 }
+
 
 function editar() {
     const dados = document.getElementsByClassName('secao-principal_container-input');
