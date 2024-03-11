@@ -31,7 +31,7 @@ function copiarLink() {
 
 function editar() {
     const dados = document.getElementsByClassName('secao-principal_container-input');
-    const id = window.location.href.slice(-1);
+    const id = window.location.href.split('/').pop();
     const link = document.getElementsByClassName('nav-menu_botao edicao');
     link[0].href += id;
     localStorage["categoria"] = dados[0].value;
@@ -40,7 +40,8 @@ function editar() {
     localStorage["descricao"] = dados[3].value;
     localStorage["codigo"] = dados[4].value;
     console.log(dados);
-    console.log(window.location.href.slice(-1));
+    console.log(id);
+    console.log(link)
 }
 
 

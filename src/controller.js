@@ -124,6 +124,7 @@ const updateTema = async (req, res) => {
     let { categoria, letra, nome, responsavel, codigo, descricao } = req.body;
     codigo = letra + codigo;
     console.log(codigo);
+    console.log("Esse é o ID que tá chegando:" + req.params.id)
     const resultados = await pool.query(queries.getTemasById, [req.params.id]);
     if (resultados.rows.length) {
         try {

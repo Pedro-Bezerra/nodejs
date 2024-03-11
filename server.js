@@ -142,7 +142,7 @@ app.post('/paratodosverem/formulario', checkAuthenticated, async (req, res) => {
             res.redirect(redirecionamento);
         } else {
             console.log("não chegou aqui");
-            res.redirect('/paratodosverem/leitura');
+            res.redirect('/paratodosverem/principal');
         }
     } catch (error) {
         console.error(error);
@@ -182,7 +182,7 @@ app.post('/paratodosverem/formulario/editar/:id', checkAuthenticated, async (req
             res.redirect(redirecionamento);
         } else {
             console.log("não chegou aqui");
-            res.redirect('/paratodosverem/leitura');
+            res.redirect('/paratodosverem/principal');
         }
     } catch (error) {
         console.error(error);

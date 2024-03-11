@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
     letra[0].value = localStorage['codigo'][0];
     textos[2].value = localStorage['codigo'].slice(1);
     textos[3].value = localStorage['descricao'];
-    form[0].action = window.location.href.slice(-1);
+    form[0].action = window.location.href.split('/').pop();
 
 })
 
